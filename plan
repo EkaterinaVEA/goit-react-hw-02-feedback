@@ -1,0 +1,7 @@
+Wraper
+    Section title="Please leave feedback"
+        FeedbackOptions
+
+    Section title="Statistics"
+        Statistics
+        Notification message="No feedback given"
