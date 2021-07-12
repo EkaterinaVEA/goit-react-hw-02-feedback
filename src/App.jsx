@@ -15,9 +15,11 @@ class App extends Component {
   }
 
   handleChangeStatistics = (e) => {
-    this.setState(prev => {
+    const feedback = e.currentTarget.dataset.feedback;
+
+    this.setState((prev) => {
       return {
-        [e.target.name]: prev[e.target.name] + 1
+        [feedback]: prev[feedback] + 1
       }
     })
   }
@@ -43,6 +45,7 @@ class App extends Component {
         <Section title="Please leave feedback">
           <Container>
             <FeedbackOptions
+            options={this.state}
             onChangeStatistics={this.handleChangeStatistics}
           />
           </Container>

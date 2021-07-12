@@ -1,32 +1,30 @@
 import PropTypes from 'prop-types';
-import { Options, Button } from './FeedbackOptions.styles';
-import { RiEmotionHappyLine, RiEmotionNormalLine, RiEmotionUnhappyLine } from "react-icons/ri";
+import Button from '../Button/Button';
+import { Options, Item } from './FeedbackOptions.styles';
 
-const FeedbackOptions = ({onChangeStatistics}) => (
-    <Options>
-        <Button
-            onClick={onChangeStatistics}
-            name="good">
-            <RiEmotionHappyLine size="30" color="#00FF00"/>
-            good
-        </Button>
-        <Button
-            onClick={onChangeStatistics}
-            name="neutral">
-            <RiEmotionNormalLine size="30" color="#FFD700" />
-            neutral
-        </Button>
-        <Button
-            onClick={onChangeStatistics}
-            name="bad">
-            <RiEmotionUnhappyLine size="30" color="#ff0000" />
-            bad
-        </Button>
-    </Options>
-)
+
+const FeedbackOptions = ({ options, onChangeStatistics }) => {
+    options = Object.keys(options);
+
+    return (
+        <Options>
+            {options.map((option) => (
+                <Item key={option}>
+                <Button feedback={option} onClick={onChangeStatistics} />
+                </Item>
+            ))}
+        </Options>
+    );
+}
+
 
 FeedbackOptions.propTypes = {
     onChangeStatistics: PropTypes.func.isRequired,
+    options: PropTypes.shape({
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+  }).isRequired,
 }
 
 export default FeedbackOptions;

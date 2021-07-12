@@ -12,7 +12,7 @@ const Notification = ({ message, icon="🤷" }) => {
 
 Notification.propTypes = {
   message: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.string,
 }
 
 export default Notification;
